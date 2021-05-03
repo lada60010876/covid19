@@ -48,7 +48,7 @@ const SearchPage = ({ Covid19data = [] }) => {
   return (
     <Fragment>
 
-      <Row xs={12} md={12} lg={12}  >
+      <Row xs={12} md={12} lg={6}  >
 
         <Col xs={12} md={{ span: 2, offset: 1 }} lg={{ span: 2, offset: 1 }}  >
           <ButtonGroup toggle>
