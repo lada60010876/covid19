@@ -25,6 +25,7 @@ const App = () => {
       </div>
       <div className="section">
         {Covid19data != [] && <Section2 Covid19data={Covid19data.Countries} />}
+        <div class='icon-scroll' />
 
       </div>
 
