@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react"
+import Section1 from './components/Section1'
+import Section2 from './components/SearchPage'
 
-function App() {
+const App = () => {
+  const [Covid19data, setCovid19data] = useState([])
+  const fetchData = async () => {
+    return await fetch('https://api.covid19api.com/summary')
+      .then(response => response.json())
+      .then(data => {
+        setCovid19data(data)
+      });
+  }
+  useEffect(() => {
+    fetchData()
+  }, []);
+  console.log(Covid19data)
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+    <div className="wrapper">
+      <div className="section">
+        {Covid19data!=[]&& <Section1 Covid19data={Covid19data.Global} />}
+
+      </div>
+      <div className="section">
+        {Covid19data!=[]&& <Section2 Covid19data={Covid19data.Countries} />}
+
+      </div>
+
     </div>
+
   );
 }
 

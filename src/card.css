@@ -1,0 +1,68 @@
+.card {
+    max-height: 200px;
+    margin: 15px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.card-body {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    grid-template-rows: repeat(2, 50%);
+}
+.card-body .box {
+    bottom: 0;
+
+}
+.card-body .box:nth-child(1) .total-new-num {
+    font-size: 20px;
+    font-weight: 400;
+}
+.card-body .box:nth-child(1) .total-new-des {
+    font-size: 10px;
+    color: rgb(170, 170, 170);
+}
+
+.card-body .box:nth-child(2) .flag-img {
+    border: 1px solid gainsboro;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-body .box:nth-child(2) .country-name {
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+}
+.card-body .box:nth-child(n + 3) {
+    display: flex;
+    flex-direction: column;
+    margin-top: auto;    
+}
+.card-body .box:nth-child(n + 3) .total-new-num {
+
+    font-size: 14px;
+    font-weight: 400;
+}
+.card-body .box:nth-child(n + 3) .total-new-des {
+    font-size: 8px;
+    color: rgb(170, 170, 170);
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}
