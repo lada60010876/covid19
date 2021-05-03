@@ -3,7 +3,9 @@
   font-family: "Mitr", sans-serif;
   font-weight: lighter;
 }
-
+.btn-group>.btn   {
+  border-radius: 500px;
+}
 .wrapper {
   position: relative;
   margin: 0;
@@ -154,6 +156,7 @@
     width: 500px;
   }
 }
+@import "./iconscroll.css";
 
 @import "./card.css";
 @import "./countrylist.css";

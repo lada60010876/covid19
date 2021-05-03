@@ -19,11 +19,12 @@ const App = () => {
 
     <div className="wrapper">
       <div className="section">
-        {Covid19data!=[]&& <Section1 Covid19data={Covid19data.Global} />}
+        {Covid19data != [] && <Section1 Covid19data={Covid19data.Global} />}
+        <div class='icon-scroll' />
 
       </div>
       <div className="section">
-        {Covid19data!=[]&& <Section2 Covid19data={Covid19data.Countries} />}
+        {Covid19data != [] && <Section2 Covid19data={Covid19data.Countries} />}
 
       </div>
 
