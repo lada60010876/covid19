@@ -15,15 +15,15 @@ const Secction1 = ({ Covid19data = [] }) => {
 
             <Card  >
               <div className="box">
-                <div className="total-num text-primary">{Covid19data.Global&&Covid19data.Global.TotalConfirmed}</div>
+                <div className="total-num text-primary">{Covid19data.Global&&Covid19data.Global.TotalConfirmed.toLocaleString()}</div>
                 <div className="total-detail "> Total Confirmed</div>
               </div>
               <div className="box">
-                <div className="total-num text-danger">{Covid19data.Global&&Covid19data.Global.TotalDeaths}</div>
+                <div className="total-num text-danger">{Covid19data.Global&&Covid19data.Global.TotalDeaths.toLocaleString()}</div>
                 <div className="total-detail ">Total Deaths</div>
               </div>
               <div className="box">
-                <div className="total-num text-success">{Covid19data.Global&&Covid19data.Global.TotalRecovered}</div>
+                <div className="total-num text-success">{Covid19data.Global&&Covid19data.Global.TotalRecovered.toLocaleString()}</div>
                 <div className="total-detail ">Total Recovered</div>
               </div>
             </Card>
