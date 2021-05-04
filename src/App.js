@@ -27,7 +27,7 @@ const App = () => {
 
       </div>
       <div className='text-scroll-1' >Scroll or Tab </div>
-      <div className='text-scroll-2 ' >More Detail </div>
+      <div className='text-scroll-2 ' >More Details </div>
       <div className='icon-scroll' />
 
 

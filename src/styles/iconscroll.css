@@ -1,16 +1,16 @@
-.text-scroll-1{
+.text-scroll-1 {
     position: absolute;
-    left: 50%;    
+    left: 50%;
+    transform: translateX(-50%);
     bottom: 0;
-    margin-left: -50px;
     color: white;
     margin-bottom: 110px;
 }
-.text-scroll-2{
+.text-scroll-2 {
     position: absolute;
     left: 50%;
+    transform: translateX(-50%);
     bottom: 0;
-    margin-left: -40px;
     color: white;
     margin-bottom: 90px;
 }
