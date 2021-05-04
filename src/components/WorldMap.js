@@ -8,7 +8,7 @@ const projection = geoEqualEarth()
   .translate([800 / 2, 450 / 2])
 
 const WorldMap = ({ Covid19data = [] }) => {
-  const circleRef = createRef(null);
+  const courntyRef = createRef(null);
 
   const [geographies, setGeographies] = useState([])
   const [countries, setCountries] = useState([])
@@ -42,7 +42,7 @@ const WorldMap = ({ Covid19data = [] }) => {
     const index = countries.findIndex(element => element.id === parseInt(d.id, 10))
     const Countrydetail = Covid19data.find(element => element.CountryCode === countries[index].code)
     setClickedcountry({ countryIndex, Countrydetail })
-    circleRef.current.focus();
+    courntyRef.current.focus();
   }
 
 
@@ -55,7 +55,7 @@ const WorldMap = ({ Covid19data = [] }) => {
           geographies.map((d, i) => (
             <Fragment key={`path-${i}`}>
               <path
-              
+
                 d={geoPath().projection(projection)(d)}
                 className="country element"
                 fill={Clickedcountry.countryIndex === i ? `rgba(66, 135, 245)` : `rgba(220,220,220,${1 / geographies.length * i})`}
@@ -64,21 +64,29 @@ const WorldMap = ({ Covid19data = [] }) => {
                 onMouseOver={() => handleCountryClick(d, i)}
 
                 onClick={() => handleCountryClick(d, i)}
-                ref={circleRef}
+                ref={courntyRef}
 
               />
-              <Tooltip triggerRef={circleRef}  >
+              <Tooltip triggerRef={courntyRef}  >
+                <rect
+                  style={{ opacity: 0.8 }}
+                  width={210}
+                  height={40}
+                  rx={0}
+                  ry={3}
+                  fill="grey"
+                />
+                <text x={10} y={15} fontSize={16} fill="white">
+                  {Clickedcountry && Clickedcountry.Countrydetail && Clickedcountry.Countrydetail.Country}
+                </text>
                 <rect
 
                   rx={0.6}
                   ry={0.5}
                   fill="transparent"
                 />
-                <text x={5} y={5} fontSize={16} fill="white">
-                  {Clickedcountry && Clickedcountry.Countrydetail && Clickedcountry.Countrydetail.Country}
-                </text>
-                <text x={5} y={25} fontSize={18} fill="white"  >
-                  {Clickedcountry && Clickedcountry.Countrydetail && Clickedcountry.Countrydetail.NewConfirmed}
+                <text x={5} y={35} fontSize={14} fill="white"  >
+                 New case : {Clickedcountry && Clickedcountry.Countrydetail && Clickedcountry.Countrydetail.NewConfirmed}
                 </text>
               </Tooltip>
             </Fragment>
