@@ -13,10 +13,15 @@ const OneCard = ({ countryData = [], typeSorting }) => {
           {countryData.TotalConfirmed != 0 ?
             countryData.TotalConfirmed.toLocaleString() : "unreported"}
           <br />
-      (
+          <span>
+            (
         {countryData.NewConfirmed != 0 ?
-            countryData.NewConfirmed.toLocaleString() : "unreported"}
+              <Fragment>
+                +{countryData.NewConfirmed.toLocaleString()}
+              </Fragment> : "unreported"}
       )
+          </span>
+
         </div>
         <div className="total-new-des">Total confirmed cases(New)</div>
 
@@ -38,9 +43,12 @@ const OneCard = ({ countryData = [], typeSorting }) => {
           {countryData.TotalRecovered != 0 ?
             countryData.TotalRecovered.toLocaleString() : "unreported"}
           <br />
-          ({countryData.NewRecovered != 0 ?
-            countryData.NewRecovered.toLocaleString() : "unreported"})
-      </div>
+          <span>({countryData.NewRecovered != 0 ?
+            <Fragment>
+              +{countryData.NewRecovered.toLocaleString()}
+            </Fragment> : "unreported"})</span>
+
+        </div>
         <div className="total-new-des">Total recovered cases(New)</div>
       </div>
     }
@@ -50,8 +58,9 @@ const OneCard = ({ countryData = [], typeSorting }) => {
           {countryData.TotalDeaths != 0 ?
             countryData.TotalDeaths.toLocaleString() : "unreported"}
           <br />
-        ({countryData.NewDeaths != 0 ?
-            countryData.NewDeaths.toLocaleString() : "unreported"})</div>
+          <span>({countryData.NewDeaths != 0 ?
+            <Fragment>+{countryData.NewDeaths.toLocaleString()}</Fragment> : "unreported"})</span>
+        </div >
         <div className="total-new-des ">Total death cases(New)</div>
       </div>
     }
@@ -67,10 +76,10 @@ const OneCard = ({ countryData = [], typeSorting }) => {
       }
       if (typeSorting == "TotalConfirmed") {
         return <Fragment>
-         {TotalConfirmed()}
+          {TotalConfirmed()}
           {Country()}
-          {TotalRecovered()} 
-          {TotalDeaths()} 
+          {TotalRecovered()}
+          {TotalDeaths()}
 
         </Fragment>
       }

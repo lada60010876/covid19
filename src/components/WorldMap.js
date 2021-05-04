@@ -40,7 +40,7 @@ const WorldMap = () => {
               key={`path-${i}`}
               d={geoPath().projection(projection)(d)}
               className="country"
-              fill={Clickedcountry == i ? `rgba(66, 135, 245)` : `rgba(38,50,56,${1 / geographies.length * i})`}
+              fill={Clickedcountry == i ? `rgba(66, 135, 245)` : `rgba(220,220,220,${1 / geographies.length * i})`}
            
               stroke="#FFFFFF"
               strokeWidth={0.5}
