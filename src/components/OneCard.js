@@ -23,7 +23,7 @@ const OneCard = ({ countryData = [], typeSorting }) => {
           </span>
 
         </div>
-        <div className="total-new-des">Total confirmed cases(New)</div>
+        <div className="total-new-des">Total confirmed (New)</div>
 
 
       </div>
@@ -36,7 +36,6 @@ const OneCard = ({ countryData = [], typeSorting }) => {
 
       </div>
     }
-
     const TotalRecovered = () => {
       return <div className="box">
         <div className="total-new-num">
@@ -49,7 +48,7 @@ const OneCard = ({ countryData = [], typeSorting }) => {
             </Fragment> : "unreported"})</span>
 
         </div>
-        <div className="total-new-des">Total recovered cases(New)</div>
+        <div className="total-new-des">Total recovered (New)</div>
       </div>
     }
     const TotalDeaths = () => {
@@ -61,7 +60,7 @@ const OneCard = ({ countryData = [], typeSorting }) => {
           <span>({countryData.NewDeaths != 0 ?
             <Fragment>+{countryData.NewDeaths.toLocaleString()}</Fragment> : "unreported"})</span>
         </div >
-        <div className="total-new-des ">Total death cases(New)</div>
+        <div className="total-new-des ">Total death (New)</div>
       </div>
     }
     const renderData = () => {
@@ -94,7 +93,7 @@ const OneCard = ({ countryData = [], typeSorting }) => {
       }
     }
     return (
-      <Card key={countryData.Country} noGutters>
+      <Card key={countryData.Country} >
         <Card.Body>
           {renderData()}
 

@@ -18,6 +18,7 @@ const WorldMap = () => {
           return
         }
         response.json().then(worlddata => {
+          console.log(worlddata)
           setGeographies(feature(worlddata, worlddata.objects.countries).features)
         })
       })
@@ -31,7 +32,6 @@ const WorldMap = () => {
 
   return (
     <svg minwidth={"100%"} height={"100%"} viewBox="0 0 800 450"  className="world-map">
-      {console.log(geographies)}
       <g className="countries">
         {
           geographies.map((d, i) => (

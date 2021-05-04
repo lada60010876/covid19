@@ -54,7 +54,7 @@
 }
 .section:nth-child(2) .container::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background-image: linear-gradient(to top, #5ee7df 0%, #b490ca 100%);
+  background: white;
 }
   
 /* style scrollbar for IE, Edge and Firefox */

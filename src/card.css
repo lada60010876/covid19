@@ -22,19 +22,23 @@
     font-weight: 400;
 }
 .card-body .box:nth-child(1) .total-new-des {
-    font-size: 10px;
-    color: rgb(170, 170, 170);
+    font-size: 13px;
+    color: rgb(82, 81, 81);
 }
+.card-body .box:nth-child(2){
+    padding-top: 10%;
 
+}
 .card-body .box:nth-child(2) .flag-img {
     border: 1px solid gainsboro;
     display: block;
     margin-left: auto;
     margin-right: auto;    
-   
+    
 
 }
 .card-body .box:nth-child(2) .country-name {
+   
     font-size: 16px;
     font-weight: 400;
     text-align: center;
@@ -52,6 +56,6 @@
     font-weight: 400;
 }
 .card-body .box:nth-child(n + 3) .total-new-des {
-    font-size: 10px;
+    font-size: 12px;
     color: rgb(170, 170, 170);
 }

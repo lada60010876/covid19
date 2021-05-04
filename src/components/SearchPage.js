@@ -1,10 +1,11 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import SearchBar from './SearchBar';
 import CountryList from './CountryList';
-import { Container,  Row, Col, Button } from 'react-bootstrap'
+import {   Row, Col, Button } from 'react-bootstrap'
 
 const SearchPage = ({ Covid19data = [] }) => {
   const TagNoneStyling = {
+    background:"#CA9F82",
     marginRight: "0.5rem",
     borderRadius: "500px",
     border: "none",
@@ -59,7 +60,7 @@ const SearchPage = ({ Covid19data = [] }) => {
 
   return (
     <Fragment>
-      <h2 className="text-center text-white">Covid19 Countries update</h2>
+      <h2 className="text-center text-white mb-3">Covid19 Countries update</h2>
       <Row xs={12} md={12} lg={12}  >
 
         <Col xs={12} md={6} lg={6} className="col-centered mb-2" >
@@ -68,6 +69,7 @@ const SearchPage = ({ Covid19data = [] }) => {
               <Fragment>
                 <Button
                   variant="light"
+                  key={key}
                   onClick={updateSorting}
                   style={sorting === key ? TagClickStyling : TagNoneStyling}
                   className="mr-2"
@@ -79,7 +81,7 @@ const SearchPage = ({ Covid19data = [] }) => {
           }
 
         </Col>
-        <Col xs={12} md={4} lg={4} className="col-centered  " >
+        <Col xs={12} md={4} lg={4} className="col-centered  mb-2 " >
           <SearchBar
             input={input}
             onChange={updateInput}

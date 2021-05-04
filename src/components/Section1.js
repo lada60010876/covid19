@@ -30,7 +30,7 @@ const Secction1 = ({ Covid19data = [] }) => {
           </Row>
 
           <p className="text-center text-white">
-          <img src={'/refresh-buttons.svg'}/> Last update: {Moment(Covid19data && Covid19data.Date).format('LLL')} </p>
+           <img src={'/refresh-16.ico'} style={{transform:"rotate(90deg)"}}  />{' '}Last update: {Moment(Covid19data && Covid19data.Date).format('LLL')} </p>
           <Container >
             <WorldMap />
 
