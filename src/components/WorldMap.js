@@ -1,13 +1,15 @@
-import React, { useState, useEffect, Fragment } from "react"
+import React, { useState, useEffect, Fragment, createRef } from "react"
 import { geoEqualEarth, geoPath } from "d3-geo"
 import { feature } from "topojson-client"
-import { OverlayTrigger, Tooltip } from 'react-bootstrap'
+import { Tooltip } from "react-svg-tooltip";
 
 const projection = geoEqualEarth()
   .scale(160)
   .translate([800 / 2, 450 / 2])
 
 const WorldMap = ({ Covid19data = [] }) => {
+  const circleRef = createRef(null);
+
   const [geographies, setGeographies] = useState([])
   const [countries, setCountries] = useState([])
 
@@ -21,7 +23,6 @@ const WorldMap = ({ Covid19data = [] }) => {
           return
         }
         response.json().then(worlddata => {
-          console.log(worlddata)
           setGeographies(feature(worlddata, worlddata.objects.countries).features)
         })
       })
@@ -41,8 +42,8 @@ const WorldMap = ({ Covid19data = [] }) => {
   const handleCountryClick = (d, countryIndex) => {
     const index = countries.findIndex(element => element.id == parseInt(d.id, 10))
     const Countrydetail = Covid19data.find(element => element.CountryCode == countries[index].code)
-    console.log(Countrydetail)
     setClickedcountry({ countryIndex, Countrydetail })
+    circleRef.current.focus();
   }
 
 
@@ -50,39 +51,44 @@ const WorldMap = ({ Covid19data = [] }) => {
   return (
 
     <svg minwidth={"100%"} height={"100%"} viewBox="0 0 800 450" className="world-map">
-      <OverlayTrigger
-        key="top"
-        placement="top"
-        overlay={
-          <Tooltip >
-            Tooltip on <strong>"</strong>.
-        </Tooltip>
-        }
-      >
-        <g className="countries">
-          {
-            geographies.map((d, i) => (
-              <Fragment>
+      <g className="countries ">
+        {
+          geographies.map((d, i) => (
+            <Fragment>
+              <path
+                key={`path-${i}`}
+                d={geoPath().projection(projection)(d)}
+                className="country element"
+                fill={Clickedcountry.countryIndex == i ? `rgba(66, 135, 245)` : `rgba(220,220,220,${1 / geographies.length * i})`}
+                stroke="#FFFFFF"
+                strokeWidth={0.5}
+                onMouseOver={() => handleCountryClick(d, i)}
 
-                <path
-                  key={`path-${i}`}
-                  d={geoPath().projection(projection)(d)}
-                  className="country"
-                  fill={Clickedcountry.countryIndex == i ? `rgba(66, 135, 245)` : `rgba(220,220,220,${1 / geographies.length * i})`}
+                onClick={() => handleCountryClick(d, i)}
+                ref={circleRef}
 
-                  stroke="#FFFFFF"
-                  strokeWidth={0.5}
-                  onDragOver={() => handleCountryClick(d, i)}
-                  onClick={() => handleCountryClick(d, i)}
+              />
+              <Tooltip triggerRef={circleRef}>
+                <rect
+
+                  rx={0.6}
+                  ry={0.5}
+                  fill="transparent"
                 />
-              </Fragment>
+                <text x={5} y={5} fontSize={16} fill="white">
+                  {Clickedcountry && Clickedcountry.Countrydetail && Clickedcountry.Countrydetail.Country}
+                </text>
+                <text x={5} y={25} fontSize={18} fill="white"  >
+                  {Clickedcountry && Clickedcountry.Countrydetail && Clickedcountry.Countrydetail.NewConfirmed}
+                </text>
+              </Tooltip>
+            </Fragment>
 
 
-            ))
-          }
-        </g>
 
-      </OverlayTrigger>
+          ))
+        }
+      </g>
 
     </svg>
   )
