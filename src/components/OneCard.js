@@ -4,8 +4,6 @@ import Flags from 'country-flag-icons/react/3x2'
 
 const OneCard = ({ countryData = [], typeSorting }) => {
 
-
-
   const setCardData = (countryData) => {
     const Flag = Flags[countryData.CountryCode];
     if (countryData == []) return null

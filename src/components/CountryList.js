@@ -5,8 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 const CountryList = ({ countryList = [], typeSorting}) => {
 
   return (
-    <Container >
-      <Row xs={12} md={12} lg={12} >
+      <Row xs={12} md={12} lg={12} className=" container flex-grow-1  ">
 
         {countryList.map((data, index) => {
 
@@ -21,7 +20,6 @@ const CountryList = ({ countryList = [], typeSorting}) => {
         })}
       </Row>
 
-    </Container>
 
   );
 }

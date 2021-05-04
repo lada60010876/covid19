@@ -22,12 +22,12 @@ const App = () => {
         {Covid19data != [] && <Section1 Covid19data={Covid19data.Global} />}
 
       </div>
-      <div className="section">
+      <div className="section  ">
         {Covid19data != [] && <Section2 Covid19data={Covid19data.Countries} />}
 
 
       </div>
-      <div class='icon-scroll' />
+      <div className='icon-scroll' />
     </div>
 
   );

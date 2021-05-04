@@ -1,9 +1,21 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import SearchBar from './SearchBar';
 import CountryList from './CountryList';
-import { Container, ToggleButton, ButtonGroup, Row, Col } from 'react-bootstrap'
+import { Container,  Row, Col, Button } from 'react-bootstrap'
 
 const SearchPage = ({ Covid19data = [] }) => {
+  const TagNoneStyling = {
+    marginRight: "0.5rem",
+    borderRadius: "500px",
+    border: "none",
+  };
+  const TagClickStyling = {
+    color:"#fff",
+    marginRight: "0.5rem",
+    background: "#4051A6",
+    border: "none", borderRadius: "500px"
+  };
+
   const [input, setInput] = useState('');
   const [sorting, setSorting] = useState('TotalConfirmed');
   const [countryListDefault, setCountryListDefault] = useState();
@@ -47,28 +59,27 @@ const SearchPage = ({ Covid19data = [] }) => {
 
   return (
     <Fragment>
+      <h2 className="text-center">Covid19 Counties update</h2>
+      <Row xs={12} md={12} lg={12}  >
 
-      <Row xs={12} md={12} lg={6}  >
-
-        <Col xs={12} md={{ span: 2, offset: 1 }} lg={{ span: 2, offset: 1 }}  >
-          <ButtonGroup toggle>
-            {
-              Object.entries(ListSorting).map(([key, typeSoting]) => (
-                <ToggleButton
-                  type="radio"
-                  variant="info"
+        <Col xs={12} md={6} lg={6} className="col-centered mb-2" >
+          {
+            Object.entries(ListSorting).map(([key, typeSoting]) => (
+              <Fragment>
+                <Button
+                  variant="light"
                   onClick={updateSorting}
-                  checked={sorting === key}
+                  style={sorting === key ? TagClickStyling : TagNoneStyling}
                   className="mr-2"
-                  value={key} className="">{typeSoting} </ToggleButton>
+                  value={key} className="">{typeSoting} </Button>{'  '}
+              </Fragment>
 
-              ))
-            }
-          </ButtonGroup >
+
+            ))
+          }
 
         </Col>
-        <Col xs={{ span: 5, offset: 0 }} md={{ span: 2, offset: 4 }}  lg={{ span: 2, offset: 5 }}   >
-
+        <Col xs={12} md={6} lg={4} className="col-centered " >
           <SearchBar
             input={input}
             onChange={updateInput}

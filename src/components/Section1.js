@@ -5,11 +5,10 @@ import { Container, Card, Row } from 'react-bootstrap'
 
 
 const Secction1 = ({ Covid19data = [] }) => {
-  console.log(Covid19data)
 
   return (
-    <Container >
-      <h2 className="text-center">Covid19 update</h2>
+    <Fragment >
+      <h2 className="text-center">Covid19 Global update</h2>
       {Covid19data != [] &&
         <Fragment>
           <Row xs={12} md={12} lg={12}  >
@@ -31,7 +30,7 @@ const Secction1 = ({ Covid19data = [] }) => {
           </Row>
 
           <p className="text-center">Last update: {Moment(Covid19data && Covid19data.Date).format('LLL')} </p>
-          <Container className="d-flex flex-column  align-items-center">
+          <Container >
             <WorldMap />
 
           </Container>
@@ -42,7 +41,7 @@ const Secction1 = ({ Covid19data = [] }) => {
 
 
 
-    </Container>
+    </Fragment>
 
   )
 }

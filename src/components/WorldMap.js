@@ -30,7 +30,7 @@ const WorldMap = () => {
 
 
   return (
-    <svg width={"100%"} height={"100%"} viewBox="0 0 800 450" >
+    <svg minwidth={"100%"} height={"100%"} viewBox="0 0 800 450"  className="world-map">
       {console.log(geographies)}
       <g className="countries">
         {
