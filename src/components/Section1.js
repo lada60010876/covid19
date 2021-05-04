@@ -15,15 +15,15 @@ const Secction1 = ({ Covid19data = [] }) => {
 
             <Card  >
               <div className="box">
-                <div className="total-num text-primary">{Covid19data.TotalConfirmed}</div>
+                <div className="total-num text-primary">{Covid19data.Global&&Covid19data.Global.TotalConfirmed}</div>
                 <div className="total-detail "> Total Confirmed</div>
               </div>
               <div className="box">
-                <div className="total-num text-danger">{Covid19data.TotalDeaths}</div>
+                <div className="total-num text-danger">{Covid19data.Global&&Covid19data.Global.TotalDeaths}</div>
                 <div className="total-detail ">Total Deaths</div>
               </div>
               <div className="box">
-                <div className="total-num text-success">{Covid19data.TotalRecovered}</div>
+                <div className="total-num text-success">{Covid19data.Global&&Covid19data.Global.TotalRecovered}</div>
                 <div className="total-detail ">Total Recovered</div>
               </div>
             </Card>
@@ -32,7 +32,7 @@ const Secction1 = ({ Covid19data = [] }) => {
           <p className="text-center text-white">
            <img src={'/refresh-16.ico'} style={{transform:"rotate(90deg)"}}  />{' '}Last update: {Moment(Covid19data && Covid19data.Date).format('LLL')} </p>
           <Container >
-            <WorldMap />
+            <WorldMap Covid19data={Covid19data.Countries} />
 
           </Container>
 
