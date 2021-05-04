@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react"
+import React, {  Fragment } from "react"
 import WorldMap from './WorldMap'
 import Moment from 'moment';
 import { Container, Card, Row } from 'react-bootstrap'
@@ -9,7 +9,7 @@ const Secction1 = ({ Covid19data = [] }) => {
   return (
     <Fragment >
       <h2 className="text-center text-white">Covid19 Global update</h2>
-      {Covid19data != [] &&
+      {Covid19data !== [] &&
         <Fragment>
           <Row xs={12} md={12} lg={12}  >
 
@@ -30,10 +30,9 @@ const Secction1 = ({ Covid19data = [] }) => {
           </Row>
 
           <p className="text-center text-white">
-           <img src={'/refresh-16.ico'} style={{transform:"rotate(90deg)"}}  />{' '}Last update: {Moment(Covid19data && Covid19data.Date).format('LLL')} </p>
+           <img src={'/refresh-16.ico'} style={{transform:"rotate(90deg)"}}  alt="refres-icon"/>{' '}Last update: {Moment(Covid19data && Covid19data.Date).format('LLL')} </p>
           <Container >
             <WorldMap Covid19data={Covid19data.Countries} />
-
           </Container>
 
         </Fragment>

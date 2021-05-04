@@ -1,21 +1,21 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import SearchBar from './SearchBar';
 import CountryList from './CountryList';
-import {   Row, Col, Button } from 'react-bootstrap'
-
-const SearchPage = ({ Covid19data = [] }) => {
+import { Row, Col, Button } from 'react-bootstrap'
   const TagNoneStyling = {
-    background:"#CA9F82",
+    background: "#CA9F82",
     marginRight: "0.5rem",
     borderRadius: "500px",
     border: "none",
   };
   const TagClickStyling = {
-    color:"#fff",
+    color: "#fff",
     marginRight: "0.5rem",
     background: "#4051A6",
     border: "none", borderRadius: "500px"
   };
+
+const SearchPage = ({ Covid19data = [] }) => {
 
   const [input, setInput] = useState('');
   const [sorting, setSorting] = useState('TotalConfirmed');
@@ -26,15 +26,7 @@ const SearchPage = ({ Covid19data = [] }) => {
     TotalDeaths: "Death",
     TotalRecovered: "Recovered"
   }
-  const fetchData = async () => {
 
-    const sorted = Covid19data.sort((countryA, countryB) => {
-      return parseInt(countryB[sorting]) - parseInt(countryA[sorting]);
-    })
-    setCountryList(sorted)
-    setCountryListDefault(sorted)
-
-  }
 
   const updateInput = async (input) => {
     const filtered = countryListDefault.filter(country => {
@@ -55,8 +47,17 @@ const SearchPage = ({ Covid19data = [] }) => {
     setCountryList(sorted);
   }
   useEffect(() => {
+    const fetchData = async () => {
+
+      const sorted = Covid19data.sort((countryA, countryB) => {
+        return parseInt(countryB[sorting]) - parseInt(countryA[sorting]);
+      })
+      setCountryList(sorted)
+      setCountryListDefault(sorted)
+
+    }
     fetchData()
-  }, [Covid19data]);
+  }, [Covid19data,sorting]);
 
   return (
     <Fragment>
@@ -66,14 +67,14 @@ const SearchPage = ({ Covid19data = [] }) => {
         <Col xs={12} md={6} lg={6} className="col-centered mb-2" >
           {
             Object.entries(ListSorting).map(([key, typeSoting]) => (
-              <Fragment>
+              <Fragment    key={key}>
                 <Button
                   variant="light"
-                  key={key}
+               
                   onClick={updateSorting}
                   style={sorting === key ? TagClickStyling : TagNoneStyling}
                   className="mr-2"
-                  value={key} className="">{typeSoting} </Button>{'  '}
+                  value={key} >{typeSoting} </Button>{'  '}
               </Fragment>
 
 

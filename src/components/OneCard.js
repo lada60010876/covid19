@@ -1,21 +1,21 @@
-import React, { Fragment, useState, useEffect } from 'react'
-import { Card, Row, Col } from 'react-bootstrap'
+import React, { Fragment } from 'react'
+import { Card } from 'react-bootstrap'
 import Flags from 'country-flag-icons/react/3x2'
 
 const OneCard = ({ countryData = [], typeSorting }) => {
 
   const setCardData = (countryData) => {
     const Flag = Flags[countryData.CountryCode];
-    if (countryData == []) return null
+    if (countryData ===[]) return null
     const TotalConfirmed = () => {
       return <div className="box">
         <div className="total-new-num">
-          {countryData.TotalConfirmed != 0 ?
+          {countryData.TotalConfirmed !==0 ?
             countryData.TotalConfirmed.toLocaleString() : "unreported"}
           <br />
           <span>
             (
-        {countryData.NewConfirmed != 0 ?
+        {countryData.NewConfirmed !== 0 ?
               <Fragment>
                 +{countryData.NewConfirmed.toLocaleString()}
               </Fragment> : "unreported"}
@@ -39,10 +39,10 @@ const OneCard = ({ countryData = [], typeSorting }) => {
     const TotalRecovered = () => {
       return <div className="box">
         <div className="total-new-num">
-          {countryData.TotalRecovered != 0 ?
+          {countryData.TotalRecovered !==0 ?
             countryData.TotalRecovered.toLocaleString() : "unreported"}
           <br />
-          <span>({countryData.NewRecovered != 0 ?
+          <span>({countryData.NewRecovered !== 0 ?
             <Fragment>
               +{countryData.NewRecovered.toLocaleString()}
             </Fragment> : "unreported"})</span>
@@ -54,17 +54,17 @@ const OneCard = ({ countryData = [], typeSorting }) => {
     const TotalDeaths = () => {
       return <div className="box">
         <div className="total-new-num">
-          {countryData.TotalDeaths != 0 ?
+          {countryData.TotalDeaths !== 0 ?
             countryData.TotalDeaths.toLocaleString() : "unreported"}
           <br />
-          <span>({countryData.NewDeaths != 0 ?
+          <span>({countryData.NewDeaths !== 0 ?
             <Fragment>+{countryData.NewDeaths.toLocaleString()}</Fragment> : "unreported"})</span>
         </div >
         <div className="total-new-des ">Total death (New)</div>
       </div>
     }
     const renderData = () => {
-      if (typeSorting == "TotalDeaths") {
+      if (typeSorting === "TotalDeaths") {
         return <Fragment>
           {TotalDeaths()}
           {Country()}
@@ -73,7 +73,7 @@ const OneCard = ({ countryData = [], typeSorting }) => {
 
         </Fragment>
       }
-      if (typeSorting == "TotalConfirmed") {
+      if (typeSorting === "TotalConfirmed") {
         return <Fragment>
           {TotalConfirmed()}
           {Country()}
@@ -82,7 +82,7 @@ const OneCard = ({ countryData = [], typeSorting }) => {
 
         </Fragment>
       }
-      if (typeSorting == "TotalRecovered") {
+      if (typeSorting === "TotalRecovered") {
         return <Fragment>
           {TotalRecovered()}
           {Country()}

@@ -33,15 +33,14 @@ const WorldMap = ({ Covid19data = [] }) => {
           return
         }
         response.json().then(worlddata => {
-          console.log(worlddata)
           setCountries(worlddata)
         })
       })
   }, [])
 
   const handleCountryClick = (d, countryIndex) => {
-    const index = countries.findIndex(element => element.id == parseInt(d.id, 10))
-    const Countrydetail = Covid19data.find(element => element.CountryCode == countries[index].code)
+    const index = countries.findIndex(element => element.id === parseInt(d.id, 10))
+    const Countrydetail = Covid19data.find(element => element.CountryCode === countries[index].code)
     setClickedcountry({ countryIndex, Countrydetail })
     circleRef.current.focus();
   }
@@ -54,12 +53,12 @@ const WorldMap = ({ Covid19data = [] }) => {
       <g className="countries ">
         {
           geographies.map((d, i) => (
-            <Fragment>
+            <Fragment key={`path-${i}`}>
               <path
-                key={`path-${i}`}
+              
                 d={geoPath().projection(projection)(d)}
                 className="country element"
-                fill={Clickedcountry.countryIndex == i ? `rgba(66, 135, 245)` : `rgba(220,220,220,${1 / geographies.length * i})`}
+                fill={Clickedcountry.countryIndex === i ? `rgba(66, 135, 245)` : `rgba(220,220,220,${1 / geographies.length * i})`}
                 stroke="#FFFFFF"
                 strokeWidth={0.5}
                 onMouseOver={() => handleCountryClick(d, i)}
@@ -68,7 +67,7 @@ const WorldMap = ({ Covid19data = [] }) => {
                 ref={circleRef}
 
               />
-              <Tooltip triggerRef={circleRef}>
+              <Tooltip triggerRef={circleRef}  >
                 <rect
 
                   rx={0.6}

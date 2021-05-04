@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Card from './OneCard'
-import { Container, Row, Col } from 'react-bootstrap'
+import { Row, Col } from 'react-bootstrap'
 
 const CountryList = ({ countryList = [], typeSorting}) => {
 
