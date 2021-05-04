@@ -25,9 +25,12 @@ const App = () => {
       <div className="section  ">
         {Covid19data !== [] && <Section2 Covid19data={Covid19data.Countries} />}
 
-s
       </div>
+      <div className='text-scroll-1' >Scroll or Tab </div>
+      <div className='text-scroll-2 ' >More Detail </div>
       <div className='icon-scroll' />
+
+
     </div>
 
   );

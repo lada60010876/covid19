@@ -61,7 +61,7 @@ const SearchPage = ({ Covid19data = [] }) => {
 
   return (
     <Fragment>
-      <h2 className="text-center text-white mb-3">Covid19 Countries update</h2>
+      <h2 className="text-center text-white mb-4">Covid19 Countries update</h2>
       <Row xs={12} md={12} lg={12}  >
 
         <Col xs={12} md={6} lg={6} className="col-centered mb-2" >
